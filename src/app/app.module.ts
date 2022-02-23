@@ -8,6 +8,7 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     EmployeeListComponent,
     AddEmployeeComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    UpdateEmployeeComponent
   ],
   imports: [
     BrowserModule,
