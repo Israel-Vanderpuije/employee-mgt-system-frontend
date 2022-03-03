@@ -1,5 +1,5 @@
 <h2> Employee List </h2>
-<table class="table table-striped">
+<table class="table table-striped" id="table">
     <thead>
         <tr>
             <th> First Name </th>
@@ -14,9 +14,33 @@
             <td> {{employee.lastName}} </td>
             <td> {{employee.email}} </td>
             <td>
-                <button (click) = "updateEmployee(employee.employeeId)" class="btn btn-info"> Update</button>
-                <button (click) = "deleteEmployee(employee.employeeId)" class="btn btn-danger" style="margin-left: 10px"> Delete </button>
+                <button (click) = "updateEmployee(employee.employeeId)" class="btn btn-secondary"> Update</button>
+                <button (click) = "onOpenModal(employee)" class="btn btn-danger" style="margin-left: 10px"  data-toggle="modal" data-target="#delete"> Delete </button>
+                <button (click) = "employeeDetails(employee.employeeId)" class="btn btn-info" style="margin-left: 10px"> View Details</button>
+              
             </td>
         </tr>
     </tbody>
 </table>
+
+<!----------------------Modal--------------------->
+<div  class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="delete">Delete employee</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete {{deleteEmployee?.firstName}} {{deleteEmployee?.lastName}}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button (click) = "onDeleteEmployee(deleteEmployee.employeeId)" type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+

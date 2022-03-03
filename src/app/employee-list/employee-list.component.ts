@@ -11,6 +11,9 @@ import { EmployeeService } from '../service/employee.service';
 export class EmployeeListComponent implements OnInit {
 
   employees!: Employee[];
+  isDeleteEmployee: boolean = false;
+  showModal: boolean = false
+  deleteEmployee!: Employee
 
   constructor(private employeeService: EmployeeService, private router: Router) { }
 
@@ -24,15 +27,25 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
-  updateEmployee(id: number){
+  updateEmployee(id: number){                
     this.router.navigate(['update-employee'], {queryParams: {id: id}})
   }
 
-  deleteEmployee(id: number){
-    this.employeeService.deleteEmployee(id).subscribe(data => {
-      console.log(data)
-      this.getEmployees()
-    })
+  onDeleteEmployee(id: number){
+    console.log(id)    
+      this.employeeService.deleteEmployee(id).subscribe(data => {
+        console.log(data)
+        this.getEmployees()
+      })
+    
+  }
+
+  employeeDetails(id: number){
+    this.router.navigate(['employee-details'], {queryParams: {id: id}})
+  }
+
+  public onOpenModal(employee: Employee): void {
+    this.deleteEmployee = employee
   }
 
 }

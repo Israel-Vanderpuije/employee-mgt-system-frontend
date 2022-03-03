@@ -2,7 +2,7 @@
 
 <h3>Add Employee</h3>
 
-<form class="needs-validation" (ngSubmit) = "onSubmit()" novalidate>
+<form class="needs-validation" (ngSubmit) = "onSubmit()" #addForm = "ngForm" novalidate>
       <div class="col-md-8 mb-3">
         <label for="validationCustom01">First name</label>
         <input type="text" class="form-control" id="validationCustom01" placeholder="First name" name="firstName" [(ngModel)] = "employee.firstName" required>
